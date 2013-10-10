@@ -138,7 +138,8 @@ map <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 " NERDTree (better file browser) toggle
-map <F3> :NERDTreeToggle<CR>
+" comento version de Fisa
+map <F3> :NERDTreeToggle<CR> :NERDTreeMirror<CR>
 
 " tab navigation
 map tn :tabn<CR>
@@ -313,3 +314,66 @@ let g:airline#extensions#whitespace#enabled = 0
 "let g:airline_symbols.branch = '⭠'
 "let g:airline_symbols.readonly = '⭤'
 "let g:airline_symbols.linenr = '⭡'
+
+
+" cosas de Lipe
+" columna gris en el lugar 80
+hi ColorColumn ctermbg=darkgrey guibg=darkgrey
+set colorcolumn=80
+
+set mouse=a
+set smartcase
+"habilito pastetoggle para poder pegar sin el autoindentado
+set pastetoggle=<F12>
+
+Bundle 'toggle_words.vim'
+Bundle 'vcscommand.vim'
+Bundle 'hgrev'
+Bundle 'virtualenv.vim'
+Bundle 'vim-python-virtualenv'
+Bundle 'mhinz/vim-startify'
+Bundle 'lunaru/vim-less'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'aaronbieber/quicktask'
+
+"mapeo de toggleword
+nmap ,t :ToggleWord<CR> 
+"mapeando \v para ver el vimdiff con el repo
+nmap <leader>v :VCSVimDiff<CR> 
+
+"mostrar YankRing
+nnoremap <silent> <F11> :YRShow<CR> 
+
+"seteo el titulo de la consola segun en archivo en el que estoy
+set title
+autocmd BufRead * let &titlestring = "vim - " . expand("%:t")
+
+"mapeando para splitear facil y rapido las ventanas
+nmap <leader>sw<left>  :topleft  vnew<CR>
+nmap <leader>sw<right> :botright vnew<CR>
+nmap <leader>sw<up>    :topleft  new<CR>
+nmap <leader>sw<down>  :botright new<CR>
+
+nmap <leader>s<left>   :leftabove  vnew<CR>
+nmap <leader>s<right>  :rightbelow vnew<CR>
+nmap <leader>s<up>     :leftabove  new<CR>
+nmap <leader>s<down>   :rightbelow new<CR>
+
+" cuando sos un boludo atolondrado
+command W w
+command Wq wq
+
+" nmap <C-.> :cn<CR>
+
+let g:startify_custom_header = [
+\ '   __      ___            ',
+\ '   \ \    / (_)           ',
+\ '    \ \  / / _ _ __ ___   ',
+\ '     \ \/ / | | ''_ ` _ \ ',
+\ '      \  /  | | | | | | | ',
+\ '       \/   |_|_| |_| |_| ',
+\ '',
+\ '',
+\ ]
+
+let g:startify_bookmarks = [ '~/.vimrc' ]
